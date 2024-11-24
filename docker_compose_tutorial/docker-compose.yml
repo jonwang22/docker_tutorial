@@ -1,0 +1,17 @@
+services:
+
+  app-container:
+    build:
+      context: .
+      dockerfile: /home/ubuntu/Docker/docker_compose_tutorial/URL_Shortener/Dockerfile
+    ports:
+      - "8000:80"
+
+  nginx-container:
+    build:
+      context: .
+      dockerfile: /home/ubuntu/Docker/docker_compose_tutorial/URL_Shortener/Dockerfile.nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - app-container
